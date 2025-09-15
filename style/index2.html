@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lật ảnh</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('https://i.pinimg.com/originals/ad/1b/39/ad1b3936a0dec91213a34fd3883cc842.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .grid {
+      padding-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      width: 300px;
+      margin: 40px auto;
+    }
+
+    .card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* giữ tỉ lệ vuông */
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px; /* chỉnh size icon */
+    }
+
+    .card-front {
+      background: #fffbe6;
+    }
+
+    .card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #fd5bc9;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    button:hover {
+      background: #c3459b;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (1).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (2).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (3).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (4).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (5).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (6).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (7).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (8).jpg"></div>
+    </div></div>
+    <div class="card"><div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"><img src="img/Anh (9).jpg"></div>
+    </div></div>
+  </div>
+
+  <button id="openBtn" onclick="window.location.href='index3.html'">Mở thư</button>
+  
+  <audio id="sound">
+    <source src="pop.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const openBtn = document.getElementById('openBtn');
+    const icons = ["❤️","🥰","🌹","🌸","💖","💘","💌","💝","💞"];
+    const audio = document.getElementById("sound");
+
+    // Gán icon cho từng card-front
+    cards.forEach((card, index) => {
+      const front = card.querySelector('.card-front');
+      front.textContent = icons[index % icons.length]; // lần lượt theo danh sách
+    });
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        audio.play();
+        if (!card.classList.contains('flipped')) {
+          card.classList.add('flipped');
+        }
+
+        // Kiểm tra tất cả đã lật chưa
+        const allFlipped = [...cards].every(c => c.classList.contains('flipped'));
+        if (allFlipped) {
+          openBtn.style.display = 'inline-block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

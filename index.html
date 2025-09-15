@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trời mưa</title>
+  <style>
+    body {
+      background-image: url('https://i.pinimg.com/originals/67/9f/ed/679fed27aa3567039c2fc7a0ec274ae5.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    img {
+      width: 150px;
+      border-radius: 12px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards, float 4s ease-in-out infinite;
+      animation-delay: 0.5s, 0.5s;
+    }
+
+    button {
+      padding: 10px 30px;
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards, float 4s ease-in-out infinite;
+      animation-delay: 1s, 1s;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.05);
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="./style/img/Anh (8).jpg" alt="ảnh">
+    <button onclick="window.location.href='style/index2.html'">Nhấn Đi 😚</button>
+  </div>
+</body>
+</html>
